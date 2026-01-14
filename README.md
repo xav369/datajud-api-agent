@@ -171,6 +171,7 @@ Crie um arquivo `.env` na raiz do projeto:
 
 ```env
 OPENAI_API_KEY=sua-chave-aqui
+DATAJUD_API_KEY=sua-chave-datajud-aqui
 ```
 
 ---
@@ -261,7 +262,7 @@ python teste_simples.py
 ```json
 {
   "termo_busca": "string (opcional)",
-  "tribunal": "TJSP|TJRJ|TJMG (padrão: TJSP)",
+  "tribunal": "Sigla do tribunal (ex: TJSP, TJRJ, TJMG, STJ, STF, TST, TNU, TRT15, TRF3) (padrão: TJSP)",
   "numero_processo": "string (opcional)",
   "classe_processual": "string (opcional)",
   "tamanho": "integer (padrão: 10, máximo: 50)"
@@ -273,6 +274,14 @@ python teste_simples.py
 ```json
 {
   "total": 5,
+  "tribunal": "TJSP",
+  "criterios": {
+    "termo_busca": "plano de saúde recusa cobertura",
+    "tribunal": "TJSP",
+    "numero_processo": null,
+    "classe_processual": null,
+    "tamanho": 5
+  },
   "processos": [
     {
       "id": "identificador-unico",
@@ -307,7 +316,7 @@ python teste_simples.py
 
 **GET** `/health`
 
-**Response**: `{"status": "healthy"}`
+**Response**: `{"status": "healthy", "version": "1.1.0", "timestamp": "2024-01-01T00:00:00Z"}`
 
 ---
 
